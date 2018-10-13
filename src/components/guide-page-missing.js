@@ -1,7 +1,7 @@
 import { html } from '@polymer/lit-element';
-import { PageViewElement } from '../components/page-view-element.js';
+import { PageViewElement } from './page-view-element.js';
 
-import { SharedStyles } from '../components/shared-styles.js';
+import { SharedStyles } from './shared-styles.js';
 
 class GuidePageMissing extends PageViewElement {
   render() {

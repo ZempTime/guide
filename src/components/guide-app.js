@@ -155,10 +155,6 @@ class GuideApp extends connect(store)(LitElement) {
       /* Wide layout: when the viewport width is bigger than 460px, layout
       changes to a wide layout. */
       @media (min-width: 460px) {
-        .menu-btn {
-          display: none;
-        }
-
         .main-content {
           padding-top: 107px;
         }
