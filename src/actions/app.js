@@ -34,8 +34,8 @@ const loadPage = page => dispatch => {
     case 'concept-matcher-page':
       import('../pages/concept-matcher-page.js');
       break;
-    case 'view3':
-      import('../components/my-view3.js');
+    case 'escalations/new':
+      import('../pages/escalations-new-page.js');
       break;
     default:
       page = 'view404';

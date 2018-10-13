@@ -202,6 +202,8 @@ class MyApp extends connect(store)(LitElement) {
         'search-page'}"></search-page>
       <concept-matcher-page class="page" ?active="${this._page ===
         'concept-matcher-page'}"></concept-matcher-page>
+      <escalations-new-page class="page" ?active="${this._page ===
+        'escalations/new'}"></escalations-new-page>
       <my-view3 class="page" ?active="${this._page === 'view3'}"></my-view3>
       <my-view404 class="page" ?active="${this._page ===
         'view404'}"></my-view404>
