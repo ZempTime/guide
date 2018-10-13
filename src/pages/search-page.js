@@ -64,7 +64,10 @@ class SearchPage extends PageViewElement {
       body: formData,
     };
 
-    const response = await fetch(`http://35.172.234.98/parse`, options);
+    const response = await fetch(
+      `https://guide-ocr.herokuapp.com/parse`,
+      options
+    );
     const json = await response.json();
     console.log(json.text);
 
