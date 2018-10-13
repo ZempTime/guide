@@ -14,9 +14,9 @@ export const UPDATE_DRAWER_STATE = 'UPDATE_DRAWER_STATE';
 export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 
-export const navigate = (path) => (dispatch) => {
+export const navigate = path => dispatch => {
   // Extract the page name from path.
-  const page = path === '/' ? 'view1' : path.slice(1);
+  const page = path === '/' ? 'search-page' : path.slice(1);
 
   // Any other info you might want to extract from the path (like page type),
   // you can do here
@@ -26,10 +26,10 @@ export const navigate = (path) => (dispatch) => {
   dispatch(updateDrawerState(false));
 };
 
-const loadPage = (page) => (dispatch) => {
-  switch(page) {
-    case 'view1':
-      import('../components/my-view1.js').then((module) => {
+const loadPage = page => dispatch => {
+  switch (page) {
+    case 'search-page':
+      import('../pages/search-page.js').then(module => {
         // Put code in here that you want to run every time when
         // navigating to view1 after my-view1.js is loaded.
       });
@@ -48,38 +48,40 @@ const loadPage = (page) => (dispatch) => {
   dispatch(updatePage(page));
 };
 
-const updatePage = (page) => {
+const updatePage = page => {
   return {
     type: UPDATE_PAGE,
-    page
+    page,
   };
 };
 
 let snackbarTimer;
 
-export const showSnackbar = () => (dispatch) => {
+export const showSnackbar = () => dispatch => {
   dispatch({
-    type: OPEN_SNACKBAR
+    type: OPEN_SNACKBAR,
   });
   window.clearTimeout(snackbarTimer);
-  snackbarTimer = window.setTimeout(() =>
-    dispatch({ type: CLOSE_SNACKBAR }), 3000);
+  snackbarTimer = window.setTimeout(
+    () => dispatch({ type: CLOSE_SNACKBAR }),
+    3000
+  );
 };
 
-export const updateOffline = (offline) => (dispatch, getState) => {
+export const updateOffline = offline => (dispatch, getState) => {
   // Show the snackbar only if offline status changes.
   if (offline !== getState().app.offline) {
     dispatch(showSnackbar());
   }
   dispatch({
     type: UPDATE_OFFLINE,
-    offline
+    offline,
   });
 };
 
-export const updateDrawerState = (opened) => {
+export const updateDrawerState = opened => {
   return {
     type: UPDATE_DRAWER_STATE,
-    opened
+    opened,
   };
 };

@@ -20,11 +20,7 @@ import { updateMetadata } from 'pwa-helpers/metadata.js';
 import { store } from '../store.js';
 
 // These are the actions needed by this element.
-import {
-  navigate,
-  updateOffline,
-  updateDrawerState
-} from '../actions/app.js';
+import { navigate, updateOffline, updateDrawerState } from '../actions/app.js';
 
 // These are the elements needed by this element.
 import '@polymer/app-layout/app-drawer/app-drawer.js';
@@ -159,10 +155,6 @@ class MyApp extends connect(store)(LitElement) {
       /* Wide layout: when the viewport width is bigger than 460px, layout
       changes to a wide layout. */
       @media (min-width: 460px) {
-        .toolbar-list {
-          display: block;
-        }
-
         .menu-btn {
           display: none;
         }
@@ -182,13 +174,14 @@ class MyApp extends connect(store)(LitElement) {
     <!-- Header -->
     <app-header condenses reveals effects="waterfall">
       <app-toolbar class="toolbar-top">
-        <button class="menu-btn" title="Menu" @click="${this._menuButtonClicked}">${menuIcon}</button>
-        <div main-title>${this.appTitle}</div>
+        <button class="menu-btn" title="Menu" @click="${
+          this._menuButtonClicked
+        }">${menuIcon}</button>
       </app-toolbar>
 
       <!-- This gets hidden on a small screen-->
       <nav class="toolbar-list">
-        <a ?selected="${this._page === 'view1'}" href="/view1">View One</a>
+        <a ?selected="${this._page === 'search'}" href="/search">Search</a>
         <a ?selected="${this._page === 'view2'}" href="/view2">View Two</a>
         <a ?selected="${this._page === 'view3'}" href="/view3">View Three</a>
       </nav>
@@ -198,7 +191,7 @@ class MyApp extends connect(store)(LitElement) {
     <app-drawer .opened="${this._drawerOpened}"
         @opened-changed="${this._drawerOpenedChanged}">
       <nav class="drawer-list">
-        <a ?selected="${this._page === 'view1'}" href="/view1">View One</a>
+        <a ?selected="${this._page === 'search'}" href="/search">Search</a>
         <a ?selected="${this._page === 'view2'}" href="/view2">View Two</a>
         <a ?selected="${this._page === 'view3'}" href="/view3">View Three</a>
       </nav>
@@ -206,10 +199,12 @@ class MyApp extends connect(store)(LitElement) {
 
     <!-- Main content -->
     <main role="main" class="main-content">
-      <my-view1 class="page" ?active="${this._page === 'view1'}"></my-view1>
+      <search-page class="page" ?active="${this._page ===
+        'search-page'}"></search-page>
       <my-view2 class="page" ?active="${this._page === 'view2'}"></my-view2>
       <my-view3 class="page" ?active="${this._page === 'view3'}"></my-view3>
-      <my-view404 class="page" ?active="${this._page === 'view404'}"></my-view404>
+      <my-view404 class="page" ?active="${this._page ===
+        'view404'}"></my-view404>
     </main>
 
     <footer>
@@ -227,8 +222,8 @@ class MyApp extends connect(store)(LitElement) {
       _page: { type: String },
       _drawerOpened: { type: Boolean },
       _snackbarOpened: { type: Boolean },
-      _offline: { type: Boolean }
-    }
+      _offline: { type: Boolean },
+    };
   }
 
   constructor() {
@@ -239,10 +234,13 @@ class MyApp extends connect(store)(LitElement) {
   }
 
   firstUpdated() {
-    installRouter((location) => store.dispatch(navigate(decodeURIComponent(location.pathname))));
-    installOfflineWatcher((offline) => store.dispatch(updateOffline(offline)));
-    installMediaQueryWatcher(`(min-width: 460px)`,
-        () => store.dispatch(updateDrawerState(false)));
+    installRouter(location =>
+      store.dispatch(navigate(decodeURIComponent(location.pathname)))
+    );
+    installOfflineWatcher(offline => store.dispatch(updateOffline(offline)));
+    installMediaQueryWatcher(`(min-width: 460px)`, () =>
+      store.dispatch(updateDrawerState(false))
+    );
   }
 
   updated(changedProps) {
@@ -250,7 +248,7 @@ class MyApp extends connect(store)(LitElement) {
       const pageTitle = this.appTitle + ' - ' + this._page;
       updateMetadata({
         title: pageTitle,
-        description: pageTitle
+        description: pageTitle,
         // This object also takes an image property, that points to an img src.
       });
     }
