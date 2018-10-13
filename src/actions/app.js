@@ -38,7 +38,7 @@ const loadPage = page => dispatch => {
       break;
     default:
       page = '404';
-      import('../pages/guide-page-missing.js');
+      import('../components/guide-page-missing.js');
   }
 
   dispatch(updatePage(page));
