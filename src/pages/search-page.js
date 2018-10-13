@@ -64,7 +64,7 @@ class SearchPage extends PageViewElement {
       body: formData,
     };
 
-    const response = await fetch(`http://localhost:9001/parse`, options);
+    const response = await fetch(`http://35.172.234.98/parse`, options);
     const json = await response.json();
     console.log(json.text);
 
