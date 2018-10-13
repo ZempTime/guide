@@ -30,7 +30,7 @@ import '@polymer/app-layout/app-toolbar/app-toolbar.js';
 import { menuIcon } from './my-icons.js';
 import './snack-bar.js';
 
-class MyApp extends connect(store)(LitElement) {
+class GuideApp extends connect(store)(LitElement) {
   render() {
     // Anything that's related to rendering should be done in here.
     return html`
@@ -274,4 +274,4 @@ class MyApp extends connect(store)(LitElement) {
   }
 }
 
-window.customElements.define('my-app', MyApp);
+window.customElements.define('guide-app', GuideApp);
