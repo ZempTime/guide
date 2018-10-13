@@ -15,7 +15,7 @@ class EscalationsNewPage extends PageViewElement {
         <label for="note">📝</label>
         <input type="textarea" name="note"/>
 
-        <a href="escalations/show/">➡️</a>
+        <a href="escalations/:id">➡️</a>
       </form>
     `;
   }
