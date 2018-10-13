@@ -10,13 +10,66 @@ class SearchPage extends PageViewElement {
       ${SharedStyles}
       <section>
         <select>
-          <option value="spanish">Spanish</option>
+          <option value="spanish"><i>your-icon</i>Spanish</option>
         </select>
 
-        <input type="text" max="160" name="query" required />
-        <a href="/concept-matcher-page">▶️</concept-matcher-page>
+        ${
+          this.isTextArea
+            ? html`
+              <textarea name="query" rows="10" cols="30">${
+                this.query
+              }</textarea>
+            `
+            : html`
+              <input type="text" max="160" name="query" value="${
+                this.query
+              }" required />
+              `
+        }
+
+        <a href="/concept-matcher-page">▶️</a>
       </section>
+
+      <form action="parse" method="post" enctype="multipart/form-data">
+        <input id="file-input" type="file" accept="image/*" name="file" >
+        <p @click="${this._handleSubmit}">submit</p>
+      </form>
     `;
+  }
+
+  constructor() {
+    super();
+    this.query = '';
+    this.isTextArea = false;
+  }
+
+  static get properties() {
+    return {
+      query: String,
+      isTextArea: Boolean,
+    };
+  }
+
+  async _handleSubmit() {
+    const fileInput = this.shadowRoot.querySelector('#file-input');
+    const formData = new FormData();
+
+    formData.append('image', fileInput.files[0]);
+
+    const options = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+      body: formData,
+    };
+
+    const response = await fetch(`http://localhost:9001/parse`, options);
+    const json = await response.json();
+    console.log(json.text);
+
+    this.query = json.text;
+    this.isTextArea = true;
   }
 }
 
