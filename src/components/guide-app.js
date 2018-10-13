@@ -182,8 +182,6 @@ class GuideApp extends connect(store)(LitElement) {
       <!-- This gets hidden on a small screen-->
       <nav class="toolbar-list">
         <a ?selected="${this._page === 'search'}" href="/search">Search</a>
-        <a ?selected="${this._page === 'view2'}" href="/view2">View Two</a>
-        <a ?selected="${this._page === 'view3'}" href="/view3">View Three</a>
       </nav>
     </app-header>
 
@@ -192,7 +190,6 @@ class GuideApp extends connect(store)(LitElement) {
         @opened-changed="${this._drawerOpenedChanged}">
       <nav class="drawer-list">
         <a ?selected="${this._page === 'search'}" href="/search">Search</a>
-        <a ?selected="${this._page === 'view3'}" href="/view3">View Three</a>
       </nav>
     </app-drawer>
 
@@ -208,9 +205,10 @@ class GuideApp extends connect(store)(LitElement) {
         'escalations/:id'}"></escalations-show-page>
       <concepts-show-page class="page" ?active="${this._page ===
         'concepts/:id'}"></concepts-show-page>
-      <my-view3 class="page" ?active="${this._page === 'view3'}"></my-view3>
-      <my-view404 class="page" ?active="${this._page ===
-        'view404'}"></my-view404>
+      <circumstances-show-page class="page" ?active="${this._page ===
+        'circumstances/:id'}"></circumstances-show-page>
+      <guide-page-missing class="page" ?active="${this._page ===
+        '404'}"></guide-page-missing>
     </main>
 
     <footer>

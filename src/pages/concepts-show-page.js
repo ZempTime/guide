@@ -10,8 +10,8 @@ class ConceptsShowPage extends PageViewElement {
       ${SharedStyles}
       <h2>Circumstances</h2>
       <ul>
-          <li>Health Insurance</li>
-          <li>Car Insurance</li>
+        <li><a href="circumstances/:id">Health Insurance</a></li>
+        <li>Car Insurance</li>
       </ul>
 
       <h2>Related Concepts</h2>
