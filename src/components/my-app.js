@@ -192,7 +192,6 @@ class MyApp extends connect(store)(LitElement) {
         @opened-changed="${this._drawerOpenedChanged}">
       <nav class="drawer-list">
         <a ?selected="${this._page === 'search'}" href="/search">Search</a>
-        <a ?selected="${this._page === 'view2'}" href="/view2">View Two</a>
         <a ?selected="${this._page === 'view3'}" href="/view3">View Three</a>
       </nav>
     </app-drawer>
@@ -201,7 +200,8 @@ class MyApp extends connect(store)(LitElement) {
     <main role="main" class="main-content">
       <search-page class="page" ?active="${this._page ===
         'search-page'}"></search-page>
-      <my-view2 class="page" ?active="${this._page === 'view2'}"></my-view2>
+      <concept-matcher-page class="page" ?active="${this._page ===
+        'concept-matcher-page'}"></concept-matcher-page>
       <my-view3 class="page" ?active="${this._page === 'view3'}"></my-view3>
       <my-view404 class="page" ?active="${this._page ===
         'view404'}"></my-view404>

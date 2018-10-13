@@ -29,13 +29,10 @@ export const navigate = path => dispatch => {
 const loadPage = page => dispatch => {
   switch (page) {
     case 'search-page':
-      import('../pages/search-page.js').then(module => {
-        // Put code in here that you want to run every time when
-        // navigating to view1 after my-view1.js is loaded.
-      });
+      import('../pages/search-page.js');
       break;
-    case 'view2':
-      import('../components/my-view2.js');
+    case 'concept-matcher-page':
+      import('../pages/concept-matcher-page.js');
       break;
     case 'view3':
       import('../components/my-view3.js');

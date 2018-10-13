@@ -14,7 +14,7 @@ class SearchPage extends PageViewElement {
         </select>
 
         <input type="text" max="160" name="query" required />
-        <button>-></button>
+        <a href="/concept-matcher-page">▶️</concept-matcher-page>
       </section>
     `;
   }
