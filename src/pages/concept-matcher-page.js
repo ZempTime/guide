@@ -12,7 +12,7 @@ class ConceptMatcherPage extends PageViewElement {
       <img src="../../images/insurance.png"></img>
       <p>Curated description on what insurance is</p>
 
-      <p>✔️ / <a href="escalations/new">❌</a></p>
+      <p><a href="concepts/:id">✔️</a> / <a href="escalations/new">❌</a></p>
     `;
   }
 }

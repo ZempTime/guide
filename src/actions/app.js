@@ -40,6 +40,9 @@ const loadPage = page => dispatch => {
     case 'escalations/:id':
       import('../pages/escalations-show-page.js');
       break;
+    case 'concepts/:id':
+      import('../pages/concepts-show-page.js');
+      break;
     default:
       page = 'view404';
       import('../components/my-view404.js');

@@ -206,6 +206,8 @@ class GuideApp extends connect(store)(LitElement) {
         'escalations/new'}"></escalations-new-page>
       <escalations-show-page class="page" ?active="${this._page ===
         'escalations/:id'}"></escalations-show-page>
+      <concepts-show-page class="page" ?active="${this._page ===
+        'concepts/:id'}"></concepts-show-page>
       <my-view3 class="page" ?active="${this._page === 'view3'}"></my-view3>
       <my-view404 class="page" ?active="${this._page ===
         'view404'}"></my-view404>
