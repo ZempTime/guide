@@ -1,13 +1,3 @@
-/**
-@license
-Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/
-
 import { html } from '@polymer/lit-element';
 
 export const SharedStyles = html`
@@ -56,5 +46,20 @@ export const SharedStyles = html`
     font-size: 30px;
     line-height: 64px;
   }
+
+  input[type=text] {
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    line-height: 36px;
+    padding: 0 8px;
+  }
+  input[type=text]:hover {
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+  }
+  input[type=text]:focus {
+    outline: none;
+  }
+
 </style>
 `;

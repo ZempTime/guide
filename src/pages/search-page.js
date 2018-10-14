@@ -4,36 +4,59 @@ import { PageViewElement } from '../components/page-view-element.js';
 // These are the shared styles needed by this element.
 import { SharedStyles } from '../components/shared-styles.js';
 
+import '@polymer/iron-icon/iron-icon.js';
+import '@polymer/iron-icons/iron-icons.js';
+
 class SearchPage extends PageViewElement {
   render() {
-    return html`
-      ${SharedStyles}
-      <section>
-        <select>
-          <option value="spanish"><i>your-icon</i>Spanish</option>
-        </select>
-
-        ${
-          this.isTextArea
-            ? html`
-              <textarea name="query" rows="10" cols="30">${
-                this.query
-              }</textarea>
-            `
-            : html`
-              <input type="text" max="160" name="query" value="${
-                this.query
-              }" required />
-              `
-        }
-
-        <a href="/concept-matcher-page">▶️</a>
-      </section>
-
+    const _fileInput = html`
       <form action="parse" method="post" enctype="multipart/form-data">
         <input id="file-input" type="file" accept="image/*" name="file" >
         <p @click="${this._handleSubmit}">submit</p>
-      </form>
+      </form>`;
+
+    return html`
+      ${SharedStyles}
+      <style>
+        .page {
+          display: grid;
+          grid-template-columns: 3fr 12fr 3fr;
+          padding-top: 40px;
+        }
+
+        .searchbox-container {
+          max-width: 644px;
+          grid-column: 2 / span 1;
+          width: 100%;
+          display: flex;
+        }
+        .searchbox {
+          font-size: 24px;
+          width: calc(100% - 40px);
+        }
+        .search-button {
+          display: inline;
+        }
+        a:visited {
+          color: black;
+        }
+        iron-icon {
+          height: 36px;
+          width: 36px;
+          border: 1px solid #8c8c8c;
+          border-radius: 5px;
+          margin-left: 2px;
+        }
+      </style>
+
+      <div class="page">
+        <div class="searchbox-container">
+          <input class="searchbox" type="text" max="160" name="query" autofocus="true" required />
+          <a class="searchbutton" href="/concept-matcher-page">
+            <iron-icon icon="search"></iron-icon>
+          </a>
+        </div>
+      </div>
     `;
   }
 
