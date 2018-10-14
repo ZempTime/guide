@@ -170,9 +170,7 @@ class GuideApp extends connect(store)(LitElement) {
     <!-- Header -->
     <app-header condenses reveals effects="waterfall">
       <app-toolbar class="toolbar-top">
-        <button class="menu-btn" title="Menu" @click="${
-          this._menuButtonClicked
-        }">${menuIcon}</button>
+        <a href="/"><img src="../../images/manifest/icon-48x48.png"></a>
       </app-toolbar>
 
       <!-- This gets hidden on a small screen-->
@@ -180,14 +178,6 @@ class GuideApp extends connect(store)(LitElement) {
         <a ?selected="${this._page === 'search'}" href="/search">Search</a>
       </nav>
     </app-header>
-
-    <!-- Drawer content -->
-    <app-drawer .opened="${this._drawerOpened}"
-        @opened-changed="${this._drawerOpenedChanged}">
-      <nav class="drawer-list">
-        <a ?selected="${this._page === 'search'}" href="/search">Search</a>
-      </nav>
-    </app-drawer>
 
     <!-- Main content -->
     <main role="main" class="main-content">
