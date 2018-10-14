@@ -177,8 +177,6 @@ class GuideApp extends connect(store)(LitElement) {
         'concept-matcher-page'}"></concept-matcher-page>
       <escalations-new-page class="page" ?active="${this._page ===
         'escalations/new'}"></escalations-new-page>
-      <escalations-show-page class="page" ?active="${this._page ===
-        'escalations/:id'}"></escalations-show-page>
       <concepts-show-page class="page" ?active="${this._page ===
         'concepts/:id'}"></concepts-show-page>
       <circumstances-show-page class="page" ?active="${this._page ===

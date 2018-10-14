@@ -11,9 +11,11 @@ class GuideAccordion extends LitElement {
       ${SharedStyles}
       <style>
         .accordion-header {
-          border: 1px solid black;
           display: flex;
           justify-content: space-between;
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+          border-radius: 5px;
+          padding: 5px;
         }
 
         .title {
@@ -21,7 +23,7 @@ class GuideAccordion extends LitElement {
         }
 
         .content.opened {
-          outline: 1px solid black;
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
           border-top: 0px;
           border-radius: 5px;
         }

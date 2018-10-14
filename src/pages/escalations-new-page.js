@@ -9,9 +9,21 @@ import '@vaadin/vaadin-text-field/vaadin-text-area.js';
 import '@vaadin/vaadin-button/vaadin-button.js';
 import '@polymer/iron-icon/iron-icon.js';
 import '@polymer/iron-icons/iron-icons.js';
+import '../components/contact-card.js';
 
 class EscalationsNewPage extends PageViewElement {
   render() {
+    const contactCard = this._submitted
+      ? html`<contact-card
+          name="Wow!"
+          description="This is a description"
+          linkText="linkText"
+          linkUrl="/"
+          phoneNumber="555 555 5555"
+          email="example@email.com"
+        ></contact-card>`
+      : '';
+
     return html`
       ${SharedStyles}
       <style>
@@ -40,26 +52,55 @@ class EscalationsNewPage extends PageViewElement {
           width: 400px;
           height: 100px;
         }
+
+        iron-icon {
+          color: green;
+        }
       </style>
 
       <div class="page">
         <div class="content">
           <form action="newEscalation" method="post">
-            <vaadin-text-field label="Question / ?"></vaadin-text-field>
+            <vaadin-text-field ?readonly="${
+              this._submitted
+            }" label="Question / ?"></vaadin-text-field>
             <br />
-            <vaadin-text-area label="Note"></vaadin-text-area>
+            <vaadin-text-area ?readonly="${
+              this._submitted
+            }" label="Note"></vaadin-text-area>
             <br />
-            <vaadin-button @click="${this._handleSubmit}">
-              ${outlineContactSupport}
+
+            <vaadin-button
+              ?disabled="${this._submitted}"
+              @click="${this._handleSubmit}">
+              ${
+                this._submitted
+                  ? html`<iron-icon icon="check"></iron-icon>`
+                  : html`${outlineContactSupport}`
+              }
             </vaadin-button>
           </form>
+
+          ${contactCard}
+
         </div>
       </div>
     `;
   }
 
+  constructor() {
+    super();
+    this.submitted = false;
+  }
+
+  static get properties() {
+    return {
+      _submitted: Boolean,
+    };
+  }
+
   _handleSubmit() {
-    window.location = '/escalations/:id';
+    this._submitted = true;
   }
 }
 
