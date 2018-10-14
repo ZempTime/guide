@@ -6,6 +6,7 @@ import { SharedStyles } from '../components/shared-styles.js';
 
 import '../components/guide-accordion.js';
 import '../components/guide-concept.js';
+import '../components/contact-card.js';
 
 class ConceptsShowPage extends PageViewElement {
   render() {
