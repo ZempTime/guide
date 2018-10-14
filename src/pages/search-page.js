@@ -20,12 +20,12 @@ class SearchPage extends PageViewElement {
       <style>
         .page {
           display: grid;
-          grid-template-columns: 3fr 12fr 3fr;
+          grid-template-columns: 2fr 12fr 2fr;
           padding-top: 40px;
         }
 
         .searchbox-container {
-          max-width: 644px;
+          align-self: center;
           grid-column: 2 / span 1;
           width: 100%;
           display: flex;
