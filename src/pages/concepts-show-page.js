@@ -4,23 +4,56 @@ import { PageViewElement } from '../components/page-view-element.js';
 // These are the shared styles needed by this element.
 import { SharedStyles } from '../components/shared-styles.js';
 
+import '../components/guide-accordion.js';
+
 class ConceptsShowPage extends PageViewElement {
   render() {
     return html`
       ${SharedStyles}
+
       <h2>Circumstances</h2>
-      <ul>
-        <li><a href="circumstances/:id">Health Insurance</a></li>
-        <li>Car Insurance</li>
-      </ul>
+      ${this.circumstances.map(c => {
+        return html`
+          <guide-accordion title="${c.title}" >
+            <div slot="content">sdgalksjdglkasglasdkg</div>
+          </guide-accordion>
+        `;
+      })}
 
       <h2>Related Concepts</h2>
-      <ul>
-        <li>Health Insurance</li>
-        <li>Car Insurance</li>
-        <li>Powers Insurance</li>
-      </ul>
+        ${this.relatedConcepts.map(c => {
+          return html`
+            <guide-accordion title="${c.title}" >
+              <div slot="content">sdgalksjdglkasglasdkg</div>
+            </guide-accordion>
+          `;
+        })}
     `;
+  }
+
+  constructor() {
+    super();
+    this.circumstances = [
+      {
+        title: 'Health Insurance',
+      },
+      {
+        title: 'Car Insurance',
+      },
+    ];
+
+    this.relatedConcepts = [
+      { title: 'Health Insurance' },
+      { title: 'Car Insurance' },
+      { title: 'Powers Insurance' },
+    ];
+  }
+
+  static get properties() {
+    return {
+      circumstances: Array,
+      relatedConcepts: Array,
+    };
   }
 }
 
