@@ -28,27 +28,26 @@ class ConceptsShowPage extends PageViewElement {
       <div class="page">
         <div class="content">
           <h2>Circumstances</h2>
-          ${this.circumstances.map(c => {
+          ${this.circumstances.map(circumstance => {
             return html`
-              <guide-accordion title="${c.title}" >
-                <div slot="content">
-                  <guide-concept
-                    title="${c.title}">
-                  </guide-concept>
-                </div>
+              <guide-accordion title="${circumstance.title}" >
+                <guide-concept
+                  slot="content"
+                  description="${circumstance.description}"
+                  title="${circumstance.title}">
+                </guide-concept>
               </guide-accordion>
             `;
           })}
 
           <h2>Related Concepts</h2>
-            ${this.relatedConcepts.map(c => {
+            ${this.relatedConcepts.map(relatedConcept => {
               return html`
-                <guide-accordion title="${c.title}" >
-                  <div slot="content">
-                    <guide-concept
-                      title="${c.title}">
-                    </guide-concept>
-                  </div>
+                <guide-accordion title="${relatedConcept.title}" >
+                  <guide-concept
+                    slot="content"
+                    title="${relatedConcept.title}">
+                  </guide-concept>
                 </guide-accordion>
               `;
             })}
@@ -62,9 +61,11 @@ class ConceptsShowPage extends PageViewElement {
     this.circumstances = [
       {
         title: 'Health Insurance',
+        description: 'wat',
       },
       {
         title: 'Car Insurance',
+        description: 'wat',
       },
     ];
 

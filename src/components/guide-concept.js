@@ -39,7 +39,6 @@ class GuideConcept extends LitElement {
 
   constructor() {
     super();
-    this.query = 'insurance';
     this.englishTitle = 'Insurance';
     this.nativeTitle = 'Seguro';
     this.imageSrc = '../../images/insurance.png';
