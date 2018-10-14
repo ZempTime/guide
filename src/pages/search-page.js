@@ -91,7 +91,7 @@ class SearchPage extends PageViewElement {
             accept="image/*"
             nodrop
             max-files="1"
-            target="https://localhost:8080/parse"
+            target="http://localhost:8080/parse"
             @upload-response="${this._populateForm}">
             <iron-icon class="camera-prompt" slot="add-button" icon="camera-enhance"></iron-icon>
           </vaadin-upload>
