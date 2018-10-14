@@ -26,7 +26,6 @@ class ConceptMatcherPage extends PageViewElement {
           justify-items: center;
         }
 
-
         iron-icon:hover {
           cursor: pointer;
         }
@@ -37,10 +36,14 @@ class ConceptMatcherPage extends PageViewElement {
           height: 75px;
         }
 
-        .close{
+        .close {
           color: red;
           width: 75px;
           height: 75px;
+        }
+
+        .description {
+          padding: 25px;
         }
 
       </style>
@@ -52,7 +55,7 @@ class ConceptMatcherPage extends PageViewElement {
           <h2>${this.englishTitle}</h2>
           <h2>${this.nativeTitle}</h2>
           <img src="${this.imageSrc}" />
-          <p>${this.description}</p>
+          <p class="description">${this.description}</p>
 
           <div class="decision">
             <iron-icon class="check" icon="check"
@@ -72,7 +75,8 @@ class ConceptMatcherPage extends PageViewElement {
     this.englishTitle = 'Insurance';
     this.nativeTitle = 'Seguro';
     this.imageSrc = '../../images/insurance.png';
-    this.description = 'Una práctica o acuerdo mediante el cual una compañía o agencia gubernamental proporciona una garantía de compensación por pérdida, daño, enfermedad o muerte especificados a cambio de un pago de una prima.';
+    this.description =
+      'Una práctica o acuerdo mediante el cual una compañía o agencia gubernamental proporciona una garantía de compensación por pérdida, daño, enfermedad o muerte especificados a cambio de un pago de una prima.';
   }
 
   static get properties() {
