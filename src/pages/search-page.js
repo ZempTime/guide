@@ -11,12 +11,6 @@ import '@vaadin/vaadin-upload/vaadin-upload.js';
 
 class SearchPage extends PageViewElement {
   render() {
-    const _fileInput = html`
-      <form action="parse" method="post" enctype="multipart/form-data">
-        <input id="file-input" type="file" accept="image/*" name="file" >
-        <p @click="${this._handleSubmit}">submit</p>
-      </form>`;
-
     const validQuery = this.query !== '';
 
     return html`
@@ -60,7 +54,16 @@ class SearchPage extends PageViewElement {
           text-decoration: none;
         }
         .uploader {
-          display: none;
+          grid-column: 2 / span 1;
+          text-align: center;
+        }
+        .divider {
+          text-align: center;
+          grid-column: 2 / span 1;
+        }
+        .camera-prompt {
+          width: 50px;
+          height: 50px;
         }
       </style>
 
@@ -77,8 +80,21 @@ class SearchPage extends PageViewElement {
           </a>
           </vaadin-text-field>
         </div>
+        <br/>
+        <p class="divider">
+          ___
+        </p>
+        <br/>
         <div class="uploader">
-          <vaadin-upload capture="camera" accept="image/*"nodrop max-files="1"></vaadin-upload>
+          <vaadin-upload 
+            capture="camera"
+            accept="image/*"
+            nodrop
+            max-files="1"
+            target="https://guide-ocr.herokuapp.com/parse"
+            @upload-response="${this._populateForm}">
+            <iron-icon class="camera-prompt" slot="add-button" icon="camera-enhance"></iron-icon>
+          </vaadin-upload>
         </div>
       </div>
     `;
@@ -105,6 +121,11 @@ class SearchPage extends PageViewElement {
     if (e.keyCode == 13 && this.query !== '') {
       window.location = '/concept-matcher-page';
     }
+  }
+
+  _populateForm(e) {
+    const text = JSON.parse(e.detail.xhr.response).text;
+    this.shadowRoot.querySelector('vaadin-text-field').value = text;
   }
 
   _handleCamera() {
