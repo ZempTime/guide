@@ -37,7 +37,7 @@ class GuideApp extends connect(store)(LitElement) {
         --app-section-even-color: #f7f7f7;
         --app-section-odd-color: white;
 
-        --app-header-background-color: white;
+        --app-header-background-color: #b01608;
         --app-header-text-color: var(--app-dark-text-color);
         --app-header-selected-color: var(--app-primary-color);
 
@@ -160,15 +160,25 @@ class GuideApp extends connect(store)(LitElement) {
       vaadin-dropdown-menu {
         padding-left: calc(100% - 250px);
       }
+      #logo{
+        padding-top: 8px;
+      }
+      vaadin-dropdown-menu {
+        --lumo-body-text-color: white;
+        --lumo-contrast-60pct: white;
+      }
+      .language-icon {
+        color: white;
+      }
     </style>
 
     <!-- Header -->
     <app-header condenses reveals effects="waterfall">
       <app-toolbar class="toolbar-top">
-        <a href="/"><img src="../../images/manifest/icon-48x48.png"></a>
+        <a href="/"><img id="logo" height="50px", width="50px" src="../../images/manifest/nav-icon.png"></a>
         <vaadin-dropdown-menu name="language"
           @change="${this._handleInput}" value="${this.language}">
-          <div slot="prefix"><iron-icon icon="language"></iron-icon></div>
+          <div slot="prefix"><iron-icon class="language-icon" icon="language"></iron-icon></div>
           <template>
             <vaadin-list-box>
               <vaadin-item value="EN" label="English">English</vaadin-item>
