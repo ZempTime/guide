@@ -7,6 +7,7 @@ import { SharedStyles } from '../components/shared-styles.js';
 import '@polymer/iron-icon/iron-icon.js';
 import '@polymer/iron-icons/iron-icons.js';
 import '@vaadin/vaadin-text-field/vaadin-text-field.js';
+import '@vaadin/vaadin-upload/vaadin-upload.js';
 
 class SearchPage extends PageViewElement {
   render() {
@@ -58,19 +59,26 @@ class SearchPage extends PageViewElement {
           opacity: 0.5;
           text-decoration: none;
         }
+        .uploader {
+          display: none;
+        }
       </style>
 
       <div class="page">
         <div class="searchbox-container">
-          <vaadin-text-field max="160" name="query" autofocus="true" required @input="${
-            this._handleInput
-          }"></vaadin-text-field>
-          <a 
+          <vaadin-text-field max="160" name="query" autofocus="true" required
+          @input="${this._handleInput}"
+          @keyup="${this._handleKeyup}">
+          <a slot="suffix" 
             ?disabled="${this.query.length > 0}"
             class="searchbutton ${validQuery ? '' : 'isDisabled'}"
             href="/concept-matcher-page">
             <iron-icon icon="search"></iron-icon>
           </a>
+          </vaadin-text-field>
+        </div>
+        <div class="uploader">
+          <vaadin-upload capture="camera" accept="image/*"nodrop max-files="1"></vaadin-upload>
         </div>
       </div>
     `;
@@ -91,6 +99,16 @@ class SearchPage extends PageViewElement {
 
   _handleInput(e) {
     this[e.target.name] = e.target.value;
+  }
+
+  _handleKeyup(e) {
+    if (e.keyCode == 13 && this.query !== '') {
+      window.location = '/concept-matcher-page';
+    }
+  }
+
+  _handleCamera() {
+    this.shadowRoot.querySelector('vaadin-upload').click();
   }
 
   async _handleSubmit() {
