@@ -27,9 +27,6 @@ const loadPage = page => dispatch => {
     case 'escalations/new':
       import('../pages/escalations-new-page.js');
       break;
-    case 'escalations/:id':
-      import('../pages/escalations-show-page.js');
-      break;
     case 'concepts/:id':
       import('../pages/concepts-show-page.js');
       break;
