@@ -16,7 +16,7 @@ class EscalationsNewPage extends PageViewElement {
     const contactCard = this._submitted
       ? html`<contact-card
           name="Tu pregunta ha sido enviada."
-          description="Para más información: La Red de Proveedores de Servicios para Inmigrantes (ISPN) apoya a los nacidos en el extranjero y sus familias en la región de St. Louis aumentando los recursos de la comunidad, abogando por políticas y servicios inclusivos y educando a residentes y proveedores."
+          nativeBlurb="Para más información: La Red de Proveedores de Servicios para Inmigrantes (ISPN) apoya a los nacidos en el extranjero y sus familias en la región de St. Louis aumentando los recursos de la comunidad, abogando por políticas y servicios inclusivos y educando a residentes y proveedores."
           linkText="Sitio Web"
           linkUrl="http://www.mira-mo.org/contact-us/"
           phoneNumber="314-669-1288"
