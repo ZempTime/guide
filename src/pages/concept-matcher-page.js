@@ -72,7 +72,7 @@ class ConceptMatcherPage extends PageViewElement {
     this.englishTitle = 'Insurance';
     this.nativeTitle = 'Seguro';
     this.imageSrc = '../../images/insurance.png';
-    this.description = 'TODO';
+    this.description = 'Una práctica o acuerdo mediante el cual una compañía o agencia gubernamental proporciona una garantía de compensación por pérdida, daño, enfermedad o muerte especificados a cambio de un pago de una prima.';
   }
 
   static get properties() {
