@@ -198,7 +198,7 @@ class GuideApp extends connect(store)(LitElement) {
     </main>
 
     <footer>
-      <p>Made with &hearts; by the Polymer team.</p>
+      <p>Made with &hearts; by a GlobalHack VII team.</p>
     </footer>
 
     <snack-bar ?active="${this._snackbarOpened}">
