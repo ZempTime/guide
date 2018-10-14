@@ -15,12 +15,12 @@ class EscalationsNewPage extends PageViewElement {
   render() {
     const contactCard = this._submitted
       ? html`<contact-card
-          name="Wow!"
-          description="This is a description"
-          linkText="linkText"
-          linkUrl="/"
-          phoneNumber="555 555 5555"
-          email="example@email.com"
+          name="Tu pregunta ha sido enviada."
+          nativeBlurb="Para más información: La Red de Proveedores de Servicios para Inmigrantes (ISPN) apoya a los nacidos en el extranjero y sus familias en la región de St. Louis aumentando los recursos de la comunidad, abogando por políticas y servicios inclusivos y educando a residentes y proveedores."
+          linkText="Sitio Web"
+          linkUrl="http://www.mira-mo.org/contact-us/"
+          phoneNumber="314-669-1288"
+          email="email@mira-mo.org"
         ></contact-card>`
       : '';
 

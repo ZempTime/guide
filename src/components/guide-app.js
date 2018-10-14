@@ -173,7 +173,8 @@ class GuideApp extends connect(store)(LitElement) {
             <vaadin-list-box>
               <vaadin-item value="EN" label="English">English</vaadin-item>
               <vaadin-item value="ES" label="Spanish">Spanish</vaadin-item>
-              <vaadin-item value="FI" label="Finnish">Finnish</vaadin-item>
+              <vaadin-item value="BA" label="Bosnian">Bosnian</vaadin-item>
+              <vaadin-item value="VI" label="Vietnamese">Vietnamese</vaadin-item>
             </vaadin-list-box>
           </template>
         </vaadin-dropdown-menu>

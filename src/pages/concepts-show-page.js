@@ -6,6 +6,7 @@ import { SharedStyles } from '../components/shared-styles.js';
 
 import '../components/guide-accordion.js';
 import '../components/guide-concept.js';
+import '../components/contact-card.js';
 
 class ConceptsShowPage extends PageViewElement {
   render() {
@@ -61,18 +62,31 @@ class ConceptsShowPage extends PageViewElement {
     this.circumstances = [
       {
         title: 'Health Insurance',
-        description: 'wat',
+        imageSrc:'../../images/health insurance.png',
+        description: 'El seguro de salud es un tipo de cobertura de seguro que cubre los gastos médicos y quirúrgicos incurridos por el asegurado. El seguro de salud puede reembolsar al asegurado por los gastos incurridos por enfermedad o lesión, o pagar directamente al proveedor de atención.',
       },
       {
         title: 'Car Insurance',
-        description: 'wat',
+        imageSrc:'../../images/car insurance.png',
+        description: 'El seguro de automóvil es un contrato entre usted y la compañía de seguros que lo protege contra pérdidas financieras en caso de un accidente o robo. A cambio de su pago de una tarifa, la compañía de seguros acepta pagar sus pérdidas como se describe en su póliza, como daños o robo de su automóvil.',
       },
     ];
 
     this.relatedConcepts = [
-      { title: 'Health Insurance' },
-      { title: 'Car Insurance' },
-      { title: 'Powers Insurance' },
+      { 
+        title: 'Health Insurance', 
+        imageSrc:'../../images/health insurance.png',
+        description: 'Seguro de salud local se puede encontrar en este contacto:'
+      },
+      { title: 'Car Insurance',
+        imageSrc:'../../images/car insurance.png',
+        description: 'Seguro de auto local se puede encontrar en este contacto:'  
+      },
+      { 
+        title: 'Powers Insurance',
+        imageSrc:'../../images/powers insurance.png',
+        description: '"Powers" es una firma de seguros local que maneja muchos reclamos en el área de St. Louis y ha demostrado ser amigable al trabajar con los locales.'
+      },
     ];
   }
 
