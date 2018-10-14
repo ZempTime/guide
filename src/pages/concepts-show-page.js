@@ -61,16 +61,19 @@ class ConceptsShowPage extends PageViewElement {
     this.circumstances = [
       {
         title: 'Health Insurance',
-        description: 'wat',
+        description: 'El seguro de salud es un tipo de cobertura de seguro que cubre los gastos médicos y quirúrgicos incurridos por el asegurado. El seguro de salud puede reembolsar al asegurado por los gastos incurridos por enfermedad o lesión, o pagar directamente al proveedor de atención.',
       },
       {
         title: 'Car Insurance',
-        description: 'wat',
+        description: 'El seguro de automóvil es un contrato entre usted y la compañía de seguros que lo protege contra pérdidas financieras en caso de un accidente o robo. A cambio de su pago de una tarifa, la compañía de seguros acepta pagar sus pérdidas como se describe en su póliza, como daños o robo de su automóvil.',
       },
     ];
 
     this.relatedConcepts = [
-      { title: 'Health Insurance' },
+      { 
+        title: 'Health Insurance', 
+        description: 'Seguro de salud local se puede encontrar en estos contactos:'
+      },
       { title: 'Car Insurance' },
       { title: 'Powers Insurance' },
     ];
