@@ -13,7 +13,6 @@ class CircumstancesShowPage extends PageViewElement {
       El seguro de salud es un tipo de cobertura de seguro que cubre los gastos médicos y quirúrgicos incurridos por el asegurado. El seguro de salud puede reembolsar al asegurado por los gastos incurridos por enfermedad o lesión, o pagar directamente al proveedor de atención.</p>
       <img src="../../images/insurance.png"/>
       <p>Curated description on what insurance is</p>
-
     `;
   }
 }
