@@ -72,10 +72,14 @@ class ConceptsShowPage extends PageViewElement {
     this.relatedConcepts = [
       { 
         title: 'Health Insurance', 
-        description: 'Seguro de salud local se puede encontrar en estos contactos:'
+        description: 'Seguro de salud local se puede encontrar en este contacto:'
       },
-      { title: 'Car Insurance' },
-      { title: 'Powers Insurance' },
+      { title: 'Car Insurance',
+        description: 'Seguro de auto local se puede encontrar en este contacto:'  
+      },
+      { title: 'Powers Insurance',
+        description: '"Powers" es una firma de seguros local que maneja muchos reclamos en el área de St. Louis y ha demostrado ser amigable al trabajar con los locales.'
+      },
     ];
   }
 
