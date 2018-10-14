@@ -33,6 +33,9 @@ const loadPage = page => dispatch => {
     case 'concepts/:id':
       import('../pages/concepts-show-page.js');
       break;
+    case 'admin':
+      import('../pages/admin-page.js');
+      break;
     default:
       page = '404';
       import('../components/guide-page-missing.js');

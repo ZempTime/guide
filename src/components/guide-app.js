@@ -197,6 +197,7 @@ class GuideApp extends connect(store)(LitElement) {
         'concepts/:id'}"></concepts-show-page>
       <circumstances-show-page class="page" ?active="${this._page ===
         'circumstances/:id'}"></circumstances-show-page>
+      <admin-page class="page" ?active="${this._page === 'admin'}"></admin-page>
       <guide-page-missing class="page" ?active="${this._page ===
         '404'}"></guide-page-missing>
     </main>
