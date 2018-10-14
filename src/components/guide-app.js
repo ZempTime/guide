@@ -17,8 +17,9 @@ import '@polymer/app-layout/app-drawer/app-drawer.js';
 import '@polymer/app-layout/app-header/app-header.js';
 import '@polymer/app-layout/app-scroll-effects/effects/waterfall.js';
 import '@polymer/app-layout/app-toolbar/app-toolbar.js';
-import { menuIcon } from './my-icons.js';
 import './snack-bar.js';
+import '@vaadin/vaadin-dropdown-menu/vaadin-dropdown-menu.js';
+import '@vaadin/vaadin-item/vaadin-item.js';
 
 class GuideApp extends connect(store)(LitElement) {
   render() {
@@ -155,12 +156,27 @@ class GuideApp extends connect(store)(LitElement) {
           padding-right: 0px;
         }
       }
+
+      vaadin-dropdown-menu {
+        padding-left: calc(100% - 250px);
+      }
     </style>
 
     <!-- Header -->
     <app-header condenses reveals effects="waterfall">
       <app-toolbar class="toolbar-top">
         <a href="/"><img src="../../images/manifest/icon-48x48.png"></a>
+        <vaadin-dropdown-menu name="language"
+          @change="${this._handleInput}" value="${this.language}">
+          <div slot="prefix"><iron-icon icon="language"></iron-icon></div>
+          <template>
+            <vaadin-list-box>
+              <vaadin-item value="EN" label="English">English</vaadin-item>
+              <vaadin-item value="ES" label="Spanish">Spanish</vaadin-item>
+              <vaadin-item value="FI" label="Finnish">Finnish</vaadin-item>
+            </vaadin-list-box>
+          </template>
+        </vaadin-dropdown-menu>
       </app-toolbar>
 
       <!-- This gets hidden on a small screen-->
@@ -197,6 +213,7 @@ class GuideApp extends connect(store)(LitElement) {
   static get properties() {
     return {
       appTitle: { type: String },
+      language: { type: String },
       _page: { type: String },
       _drawerOpened: { type: Boolean },
       _snackbarOpened: { type: Boolean },
@@ -209,6 +226,7 @@ class GuideApp extends connect(store)(LitElement) {
     // To force all event listeners for gestures to be passive.
     // See https://www.polymer-project.org/3.0/docs/devguide/settings#setting-passive-touch-gestures
     setPassiveTouchGestures(true);
+    this.language = 'ES';
   }
 
   firstUpdated() {
@@ -219,6 +237,10 @@ class GuideApp extends connect(store)(LitElement) {
     installMediaQueryWatcher(`(min-width: 460px)`, () =>
       store.dispatch(updateDrawerState(false))
     );
+  }
+
+  _handleInput(e) {
+    this[e.target.name] = e.target.value;
   }
 
   updated(changedProps) {
