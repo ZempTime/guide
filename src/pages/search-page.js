@@ -6,6 +6,7 @@ import { SharedStyles } from '../components/shared-styles.js';
 
 import '@polymer/iron-icon/iron-icon.js';
 import '@polymer/iron-icons/iron-icons.js';
+import '@vaadin/vaadin-text-field/vaadin-text-field.js';
 
 class SearchPage extends PageViewElement {
   render() {
@@ -15,6 +16,8 @@ class SearchPage extends PageViewElement {
         <p @click="${this._handleSubmit}">submit</p>
       </form>`;
 
+    const validQuery = this.query !== '';
+
     return html`
       ${SharedStyles}
       <style>
@@ -23,7 +26,6 @@ class SearchPage extends PageViewElement {
           grid-template-columns: 2fr 12fr 2fr;
           padding-top: 40px;
         }
-
         .searchbox-container {
           align-self: center;
           grid-column: 2 / span 1;
@@ -37,6 +39,9 @@ class SearchPage extends PageViewElement {
         .search-button {
           display: inline;
         }
+        vaadin-text-field {
+          width: 100%;
+        }
         a:visited {
           color: black;
         }
@@ -47,12 +52,23 @@ class SearchPage extends PageViewElement {
           border-radius: 5px;
           margin-left: 2px;
         }
+        .isDisabled {
+          color: currentColor;
+          cursor: not-allowed;
+          opacity: 0.5;
+          text-decoration: none;
+        }
       </style>
 
       <div class="page">
         <div class="searchbox-container">
-          <input class="searchbox" type="text" max="160" name="query" autofocus="true" required />
-          <a class="searchbutton" href="/concept-matcher-page">
+          <vaadin-text-field max="160" name="query" autofocus="true" required @input="${
+            this._handleInput
+          }"></vaadin-text-field>
+          <a 
+            ?disabled="${this.query.length > 0}"
+            class="searchbutton ${validQuery ? '' : 'isDisabled'}"
+            href="/concept-matcher-page">
             <iron-icon icon="search"></iron-icon>
           </a>
         </div>
@@ -71,6 +87,10 @@ class SearchPage extends PageViewElement {
       query: String,
       isTextArea: Boolean,
     };
+  }
+
+  _handleInput(e) {
+    this[e.target.name] = e.target.value;
   }
 
   async _handleSubmit() {
